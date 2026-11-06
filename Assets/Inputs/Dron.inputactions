@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "name": "Dron",
+    "maps": [
+        {
+            "name": "Tercera Persona",
+            "id": "e815a8af-1d1f-4b51-b2f4-b63ecf685de0",
+            "actions": [
+                {
+                    "name": "Joystick",
+                    "type": "Value",
+                    "id": "a9aba1f4-70d6-4d71-8fc4-3ccbb268cf23",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "Nitro",
+                    "type": "Button",
+                    "id": "7586f09d-ae07-485a-8b55-aba2177acaab",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a537b011-d88f-4007-b1e9-f54bad70593c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84146e9f-2a54-40fc-b562-1bb36703074a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Nitro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
