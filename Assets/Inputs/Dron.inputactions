@@ -25,6 +25,26 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "MoverArriba",
+                    "type": "Value",
+                    "id": "5de5f5ca-f0c4-4fea-93d9-a6e211c2df34",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "MoverAbajo",
+                    "type": "Value",
+                    "id": "7bb1ed1c-11b5-4f08-bc57-cb4abd9bc9cc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -47,6 +67,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Nitro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90b918a4-772b-4475-85c4-0b33d5079eff",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoverArriba",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2468fd9-6cc9-4330-a773-271e129d4a37",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoverAbajo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

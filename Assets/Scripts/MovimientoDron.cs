@@ -6,23 +6,32 @@ public class MovimientoDron : MonoBehaviour
 {
     [Header("Input")]
     [SerializeField] private InputActionProperty joystickAction;
+    [SerializeField] private InputActionProperty joystickArriba;
+    [SerializeField] private InputActionProperty joystickAbajo;
     [SerializeField] private InputActionProperty nitro;
 
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float AlturaSpeed = 5f;
     [SerializeField] private float nitroSpeed = 10f;
     [SerializeField] private float rotationSpeed = 180f;
 
     private Vector2 joystickValue;
+    private float joystickAlturaValue;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform camara;
     [SerializeField] private WateverVolumeFloater vol;
     [SerializeField] private bool usandoNitro = false;
+    [SerializeField] private bool moviendoAltura = false;
 
     private void OnEnable()
     {
         joystickAction.action.performed += MoverDron;
         joystickAction.action.canceled += MoverDron;
+        joystickArriba.action.performed += MoverArriba;
+        joystickArriba.action.canceled += MoverArriba;
+        joystickAbajo.action.performed += MoverAbajo;
+        joystickAbajo.action.canceled += MoverAbajo;
         nitro.action.performed += Nitro;
         nitro.action.canceled += Nitro;
     }
@@ -31,6 +40,10 @@ public class MovimientoDron : MonoBehaviour
     {
         joystickAction.action.performed -= MoverDron;
         joystickAction.action.canceled -= MoverDron;
+        joystickArriba.action.performed -= MoverArriba;
+        joystickArriba.action.canceled -= MoverArriba;
+        joystickAbajo.action.performed -= MoverAbajo;
+        joystickAbajo.action.canceled -= MoverAbajo;
         nitro.action.performed -= Nitro;
         nitro.action.canceled -= Nitro;
     }
@@ -93,6 +106,30 @@ public class MovimientoDron : MonoBehaviour
             usandoNitro = false;
             Debug.Log("Nitro soltado");
         }
+    }
+
+    public void MoverArriba(InputAction.CallbackContext context)
+    {
+        joystickAlturaValue = context.ReadValue<float>();
+        moviendoAltura = true;
+        if (context.canceled)
+        {
+            joystickAlturaValue = 0f;
+            moviendoAltura = false;
+        }
+        Debug.Log(joystickAlturaValue);
+    }
+
+    public void MoverAbajo(InputAction.CallbackContext context)
+    {
+        joystickAlturaValue = -1 * context.ReadValue<float>();
+        moviendoAltura = true;
+        if (context.canceled)
+        {
+            joystickAlturaValue = 0f;
+            moviendoAltura = false;
+        }
+        Debug.Log(joystickAlturaValue);
     }
 
 }
