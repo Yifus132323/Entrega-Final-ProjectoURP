@@ -4,6 +4,7 @@ public class Recolectable : MonoBehaviour
 {
     private SpawnerRecolectables spawner;
     [SerializeField] private Sistema sis;
+    [SerializeField] private bool reaparecer = false;   // NUEVO: si es true, reaparece en otro punto al recogerla
 
     public void Inicializar(SpawnerRecolectables s)
     {
@@ -12,14 +13,18 @@ public class Recolectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        // NUEVO: si la carga está llena (o terminó la partida), no se recoge
+        if (!sis.IntentarRecoger()) return;
+
+        if (reaparecer)
         {
-            sis.puntos++;
-            transform.position = spawner.PosicionAleatoria();
+            spawner.Reubicar(this);
         }
-
-
-
-        
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

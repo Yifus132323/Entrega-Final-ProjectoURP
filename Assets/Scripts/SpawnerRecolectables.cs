@@ -22,16 +22,29 @@ public class SpawnerRecolectables : MonoBehaviour
             Recolectable r = Instantiate(prefabBase, PosicionAleatoria(), Quaternion.identity, transform);
             r.Inicializar(this);
 
-            // NUEVO: si quedó bajo el agua, apagamos el flotador para que no la suba a la superficie
-            if (r.transform.position.y < altura - 0.5f)
-            {
-                Behaviour flotador = r.GetComponent("WateverVolumeFloater1") as Behaviour;
-                if (flotador != null) flotador.enabled = false;
-            }
+            // Si quedó bajo el agua, apaga el flotador para que no la suba a la superficie
+            ConfigurarFlotador(r);
 
             GameObject modelo = Instantiate(modelos[Random.Range(0, modelos.Length)], r.transform);
             modelo.transform.localPosition = Vector3.zero;
         }
+    }
+
+    // NUEVO: lo usa Recolectable cuando reaparece; actualiza también el flotador según la profundidad
+    public void Reubicar(Recolectable r)
+    {
+        r.transform.position = PosicionAleatoria();
+        ConfigurarFlotador(r);
+    }
+
+    // NUEVO: flotador activo solo si la pieza está en la superficie
+    private void ConfigurarFlotador(Recolectable r)
+    {
+        Behaviour flotador = r.GetComponent("WateverVolumeFloater1") as Behaviour;
+        if (flotador == null) return;
+
+        float aguaY = transform.position.y + altura;
+        flotador.enabled = r.transform.position.y >= aguaY - 0.5f;
     }
 
     public Vector3 PosicionAleatoria()
