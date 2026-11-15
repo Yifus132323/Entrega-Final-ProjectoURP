@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Un solo script para todos los botones del juego.
 // - En los menús (Start, Niveles, MCompletada): úsalo solo con CargarEscena / ReiniciarEscenaActual / SalirDelJuego
@@ -20,6 +21,8 @@ public class GestorBotones : MonoBehaviour
     [SerializeField] private string escenaAlCancelar;          // si lo llenas (ej. Start), Círculo / B / Esc vuelven a esa escena; déjalo vacío en Scene1
 
     private bool pausado;
+    private GameObject botonAnterior;   // botón que abrió el panel, para devolverle la selección al cerrar
+    private GameObject panelActual;     // panel abierto (controles, opciones...)
 
     private void Start()
     {
@@ -37,14 +40,16 @@ public class GestorBotones : MonoBehaviour
     {
         RecuperarSeleccion();
 
-        // Botón "atrás" de los menús: Círculo (PS4/PS5), B (Xbox) o Esc
-        if (!string.IsNullOrEmpty(escenaAlCancelar))
+        // Botón "atrás": Círculo (PS4/PS5), B (Xbox) o Esc
+        if (AtrasPulsado())
         {
-            bool atras =
-                (Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame) ||
-                (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame);
+            if (panelActual != null)
+            {
+                OcultarPanel(panelActual);   // primero cierra el panel que esté abierto
+                return;
+            }
 
-            if (atras)
+            if (!string.IsNullOrEmpty(escenaAlCancelar))
             {
                 CargarEscena(escenaAlCancelar);
                 return;
@@ -55,9 +60,11 @@ public class GestorBotones : MonoBehaviour
         if (panelPausa == null) return;
 
         // Botón Start (PS4/PS5: Options) del mando o tecla Esc
+        // Círculo (B en Xbox) solo sirve para cerrar la pausa, no para abrirla
         bool pulsado =
             (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame) ||
-            (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame);
+            (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) ||
+            (pausado && Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame);
 
         if (pulsado) Alternar();
     }
@@ -69,7 +76,18 @@ public class GestorBotones : MonoBehaviour
         if (EventSystem.current == null) return;
         if (EventSystem.current.currentSelectedGameObject != null) return;
 
-        GameObject objetivo = pausado ? botonInicial : primerBoton;
+        GameObject objetivo;
+        if (panelActual != null)
+        {
+            // Con un panel abierto, la selección vuelve al primer botón de ese panel
+            Selectable s = panelActual.GetComponentInChildren<Selectable>();
+            objetivo = s != null ? s.gameObject : null;
+        }
+        else
+        {
+            objetivo = pausado ? botonInicial : primerBoton;
+        }
+
         if (objetivo == null || !objetivo.activeInHierarchy) return;
 
         Gamepad pad = Gamepad.current;
@@ -106,6 +124,49 @@ public class GestorBotones : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private bool AtrasPulsado()
+    {
+        return (Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame) ||
+               (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame);
+    }
+
+    // ---------- PANELES (controles, opciones...) ----------
+
+    // OnClick: arrastra el panel al campo del objeto. Sirve para cualquier panel emergente.
+    public void MostrarPanel(GameObject panel)
+    {
+        if (panel == null) return;
+
+        // Guarda el botón que abrió el panel para devolverle la selección al cerrar
+        if (EventSystem.current != null)
+        {
+            botonAnterior = EventSystem.current.currentSelectedGameObject;
+        }
+
+        panel.SetActive(true);
+        panelActual = panel;
+
+        // Selecciona el primer botón dentro del panel, para poder cerrarlo con el mando
+        Selectable primero = panel.GetComponentInChildren<Selectable>();
+        if (primero != null && EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(primero.gameObject);
+        }
+    }
+
+    public void OcultarPanel(GameObject panel)
+    {
+        if (panel == null) return;
+
+        panel.SetActive(false);
+        if (panelActual == panel) panelActual = null;
+
+        if (botonAnterior != null && EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(botonAnterior);
+        }
     }
 
     // ---------- PAUSA ----------
