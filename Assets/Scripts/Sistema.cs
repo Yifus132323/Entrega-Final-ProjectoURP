@@ -50,6 +50,13 @@ public class Sistema : MonoBehaviour
 
     private void Update()
     {
+        // NUEVO: en pausa no se actualiza nada y el aviso se esconde
+        if (Time.timeScale <= 0f)
+        {
+            if (avisoLleno != null) avisoLleno.SetActive(false);
+            return;
+        }
+
         if (terminado)
         {
             if (avisoLleno != null) avisoLleno.SetActive(false);

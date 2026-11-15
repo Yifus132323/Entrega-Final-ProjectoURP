@@ -475,7 +475,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 6726745692944459730, guid: c0d65a07e9ad46d4caf753c922618078, type: 3}
     m_PressedSprite: {fileID: 5450495004541945558, guid: 325dc3076cc38ce4584d488f59d69873, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 6726745692944459730, guid: c0d65a07e9ad46d4caf753c922618078, type: 3}
     m_DisabledSprite: {fileID: -2036989625364708293, guid: cc500e46b56592d449dcada57eadd3ef, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -488,16 +488,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883934421}
-        m_TargetAssemblyTypeName: BotonesVictoria, Assembly-CSharp
-        m_MethodName: Jugar
-        m_Mode: 1
+      - m_Target: {fileID: 1883934422}
+        m_TargetAssemblyTypeName: GestorBotones, Assembly-CSharp
+        m_MethodName: CargarEscena
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Niveles
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &596766627
@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 596766624}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1397584855
@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 4014364738955951209, guid: 13e0ccd6ef816304db1d73b927307bce, type: 3}
     m_PressedSprite: {fileID: -6032186899690950217, guid: 4b367578b8849bf47a51d50a3ed68d36, type: 3}
-    m_SelectedSprite: {fileID: -5366237982316183112, guid: 08360bc3675aa264dbad00b6ac2a0e8e, type: 3}
+    m_SelectedSprite: {fileID: 4014364738955951209, guid: 13e0ccd6ef816304db1d73b927307bce, type: 3}
     m_DisabledSprite: {fileID: -2036989625364708293, guid: cc500e46b56592d449dcada57eadd3ef, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1671,16 +1671,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883934421}
-        m_TargetAssemblyTypeName: BotonesVictoria, Assembly-CSharp
-        m_MethodName: ReiniciarMision
-        m_Mode: 1
+      - m_Target: {fileID: 1883934422}
+        m_TargetAssemblyTypeName: GestorBotones, Assembly-CSharp
+        m_MethodName: CargarEscena
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Scene1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1811405409
@@ -1732,6 +1732,7 @@ GameObject:
   - component: {fileID: 1883934420}
   - component: {fileID: 1883934419}
   - component: {fileID: 1883934421}
+  - component: {fileID: 1883934422}
   m_Layer: 0
   m_Name: PantallaVictoria
   m_TagString: Untagged
@@ -1785,6 +1786,23 @@ MonoBehaviour:
   escenaNiveles: Niveles
   escenaJuego: Scene1
   escenaInicio: Start
+--- !u!114 &1883934422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883934418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00fc62607237154da25da7ed3faf358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestorBotones
+  panelPausa: {fileID: 0}
+  botonInicial: {fileID: 0}
+  sis: {fileID: 0}
+  ocultarAlPausar: []
+  primerBoton: {fileID: 0}
 --- !u!1 &1899220792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,16 +2048,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883934421}
-        m_TargetAssemblyTypeName: BotonesVictoria, Assembly-CSharp
-        m_MethodName: Salir
-        m_Mode: 1
+      - m_Target: {fileID: 1883934422}
+        m_TargetAssemblyTypeName: GestorBotones, Assembly-CSharp
+        m_MethodName: CargarEscena
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Start
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2140243221
