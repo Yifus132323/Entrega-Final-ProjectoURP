@@ -106,7 +106,7 @@ public class SpawnerRecolectables : MonoBehaviour
                             new Vector3(tamanoArea.x, 0.1f, tamanoArea.y));
 
         // NUEVO: volumen donde puede aparecer basura bajo el agua
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(transform.position + Vector3.up * (altura - profundidadMax / 2f),
                             new Vector3(tamanoArea.x, profundidadMax, tamanoArea.y));
     }
