@@ -17,6 +17,7 @@ public class MovimientoDron : MonoBehaviour
     [SerializeField] private float AlturaSpeed = 5f;
     [SerializeField] private float nitroSpeed = 10f;
     [SerializeField] private float rotationSpeed = 180f;
+    [SerializeField] private Transform dron;
 
     [Header("Inmersion")]
     [SerializeField] private float profundidadMax = 15f;
@@ -33,6 +34,10 @@ public class MovimientoDron : MonoBehaviour
     private bool usandoNitro = false;
     private bool nitroPresionado = false;
     private bool nitroAgotado = false;
+    public AudioActivador activador;
+    private bool isNavigatingPlaying = false;
+    public bool isBelow1Height = false;
+    public bool wasDivingPlayed = false;
 
     private Vector2 joystickValue;
 
@@ -128,6 +133,16 @@ public class MovimientoDron : MonoBehaviour
 
             filtroBajoAgua.color = colorFiltro;
         }
+
+        if (dron.position.y < 1)
+        {
+            isBelow1Height = true;
+        }
+        else
+        {
+            wasDivingPlayed = false;
+            isBelow1Height = false;
+        }
     }
 
     private void FixedUpdate()
@@ -185,15 +200,29 @@ public class MovimientoDron : MonoBehaviour
 
             rb.MoveRotation(newRotation);
         }
+
+        if (isBelow1Height && !wasDivingPlayed)
+        {
+            activador.playDiving();
+            wasDivingPlayed = true;
+        }
     }
 
     public void MoverDron(InputAction.CallbackContext context)
     {
         joystickValue = context.ReadValue<Vector2>();
+        if (!isNavigatingPlaying)
+        {
+            activador.playNavigating();
+            isNavigatingPlaying = true;
+        }
 
         if (context.canceled)
         {
             joystickValue = Vector2.zero;
+            activador.StopNavigating();
+            isNavigatingPlaying = false;
+            
         }
     }
 
@@ -215,10 +244,28 @@ public class MovimientoDron : MonoBehaviour
     public void MoverArriba(InputAction.CallbackContext context)
     {
         arribaValue = context.canceled ? 0f : context.ReadValue<float>();
+        if (context.performed)
+        {
+            activador.playBeep();
+        }
+
+        if (context.canceled)
+        {
+            activador.StopBeep();
+        }
     }
 
     public void MoverAbajo(InputAction.CallbackContext context)
     {
         abajoValue = context.canceled ? 0f : context.ReadValue<float>();
+        if (context.performed)
+        {
+            activador.playBeep();
+        }
+
+        if (context.canceled)
+        {
+            activador.StopBeep();
+        }
     }
 }

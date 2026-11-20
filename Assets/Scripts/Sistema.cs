@@ -11,6 +11,7 @@ public class Sistema : MonoBehaviour
     [SerializeField] private Slider barraBateria;            // batería del dron (tiempo)
     [SerializeField] private GameObject avisoLleno;          // NUEVO: aviso "dron lleno"
     [SerializeField] private float duracionAviso = 2f;       // NUEVO: segundos que se ve el aviso
+    [SerializeField] private AudioActivador activador;
 
     [Header("Reglas")]
     [SerializeField] private int capacidad = 5;              // basuras que el dron puede llevar a la vez
@@ -101,6 +102,10 @@ public class Sistema : MonoBehaviour
         if (terminado || carga == 0) return;
 
         entregadas += carga;
+        if (carga != 0)
+        {
+            activador.playDrop();
+        }
         carga = 0;
 
         if (entregadas >= metaBasuras)

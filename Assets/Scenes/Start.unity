@@ -1440,6 +1440,105 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250560821}
   m_CullTransparentMesh: 1
+--- !u!1 &1253606481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253606482}
+  - component: {fileID: 1253606483}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1253606482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253606481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 569.51996, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253606483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253606481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e7e37e2d88d474c851b073cac1d9a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sounds:
+  - name: playOnStart
+    clip: {fileID: 8300000, guid: c14355298dada674e8a72e347800c979, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: gameplayMusic
+    clip: {fileID: 8300000, guid: 18c660c6f462aaa42bf3e2d57c1d5eb9, type: 3}
+    type: 0
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: downSound
+    clip: {fileID: 8300000, guid: aa8a1054e27b8064db406ee92ea7db81, type: 3}
+    type: 2
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: diving
+    clip: {fileID: 8300000, guid: 0cdf8b28a582a1d4c89af4908891b33e, type: 3}
+    type: 2
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: navigating
+    clip: {fileID: 8300000, guid: 7f6f126904665624c89c01eaad91f9a0, type: 3}
+    type: 2
+    volume: 0.111
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: pick
+    clip: {fileID: 8300000, guid: c1c7dea1ca3b2664bb0d2c6da5eb3554, type: 3}
+    type: 2
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: dropWaste
+    clip: {fileID: 8300000, guid: 50af7c6ee0504824db189908ff036bee, type: 3}
+    type: 2
+    volume: 0.373
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  masterVolume: 1
+  musicVolume: 0.093
+  backgroundVolume: 1
+  sfxVolume: 1
+  musicFadeTime: 1.5
 --- !u!1 &1299817425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,3 +2079,4 @@ SceneRoots:
   - {fileID: 689863569}
   - {fileID: 380525285}
   - {fileID: 1299817427}
+  - {fileID: 1253606482}

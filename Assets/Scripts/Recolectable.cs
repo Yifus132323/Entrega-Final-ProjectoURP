@@ -4,6 +4,7 @@ public class Recolectable : MonoBehaviour
 {
     private SpawnerRecolectables spawner;
     [SerializeField] private Sistema sis;
+    [SerializeField] private AudioActivador activador;
     [SerializeField] private bool reaparecer = false;   // NUEVO: si es true, reaparece en otro punto al recogerla
 
     public void Inicializar(SpawnerRecolectables s)
@@ -26,5 +27,6 @@ public class Recolectable : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        activador.playPick();
     }
 }
