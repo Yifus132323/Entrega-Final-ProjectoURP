@@ -91,7 +91,11 @@ public class Sistema : MonoBehaviour
         carga++;
 
         // NUEVO: avisa apenas se llena, sin esperar a que intente recoger otra
-        if (carga >= capacidad) avisoHasta = Time.time + duracionAviso;
+        if (carga >= capacidad) 
+        {
+            avisoHasta = Time.time + duracionAviso;
+            activador.playAlarm();
+        } 
 
         return true;
     }

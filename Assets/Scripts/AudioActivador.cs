@@ -94,6 +94,38 @@ public class AudioActivador : MonoBehaviour
         }
     }
 
+    public void playAlarm()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.playAlarm();
+        }
+    }
+
+    public void StopAlarm()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopAlarm();
+        }
+    }
+
+    public void playMenuStartMusic()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.playMenuStartMusic();
+        }
+    }
+
+    public void StopMenuStartMusic()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopMenuStartMusic();
+        }
+    }
+
 
 
 

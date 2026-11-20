@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float backgroundVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
+    [SerializeField]private GameObject botonSilenciado;
 
     [Header("Music")]
     public float musicFadeTime = 1.5f;
@@ -48,6 +49,7 @@ public class AudioManager : MonoBehaviour
     // ---------------------------------------------------------------
     private void Awake()
     {
+
         // Singleton: only one AudioManager can exist
         if (Instance != null && Instance != this)
         {
@@ -272,5 +274,30 @@ public class AudioManager : MonoBehaviour
     public void StopDrop()
     {
         Stop("dropWaste");
+    }
+
+    public void playAlarm()
+    {
+        Play("alarmLleno");
+    }
+
+    public void StopAlarm()
+    {
+        Stop("alarmLleno");
+    }
+
+    public void playMenuStartMusic()
+    {
+        Play("playOnStart");
+        Stop("gameplayMusic");
+        botonSilenciado.SetActive(false);
+    }
+
+    public void StopMenuStartMusic()
+    {
+        Stop("playOnStart");
+        Stop("gameplayMusic");
+        botonSilenciado.SetActive(true);
+        
     }
 }
