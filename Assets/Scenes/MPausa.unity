@@ -483,7 +483,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 1.5911865, w: 10.134705}
+  m_margin: {x: 0, y: 0, z: 206.8783, w: -26.711609}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -607,7 +607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.146, y: -93.0066}
+  m_AnchoredPosition: {x: 2.146, y: -47}
   m_SizeDelta: {x: 1146.9436, y: 403.7272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768975313
@@ -727,7 +727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.976, y: 44.3506}
+  m_AnchoredPosition: {x: 1.976, y: 49}
   m_SizeDelta: {x: 1150.8794, y: 405.1169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935990798
@@ -1054,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2232971, y: 189.70001}
-  m_SizeDelta: {x: -474.35, y: -854.2}
+  m_AnchoredPosition: {x: 4.8197, y: 189.70001}
+  m_SizeDelta: {x: -481.54, y: -854.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046596202
 MonoBehaviour:
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.77719593, b: 0.9339623, a: 0.392}
+  m_Color: {r: 0, g: 0.20818213, b: 0.4245283, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1222,7 +1222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.6615, y: -232.1891}
+  m_AnchoredPosition: {x: 2.6615, y: -142}
   m_SizeDelta: {x: 1133.7515, y: 399.0835}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108015850

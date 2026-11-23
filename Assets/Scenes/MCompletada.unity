@@ -1803,6 +1803,7 @@ MonoBehaviour:
   sis: {fileID: 0}
   ocultarAlPausar: []
   primerBoton: {fileID: 0}
+  escenaAlCancelar: 
 --- !u!1 &1899220792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,7 +1942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.77719593, b: 0.9339623, a: 0.392}
+  m_Color: {r: 0.05228728, g: 0.23776154, b: 0.4433962, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
