@@ -134,6 +134,7 @@ public class Sistema : MonoBehaviour
         ResultadoPartida.meta = metaBasuras;
 
         // Apaga el control del dron y lo frena
+        dron.activador.StopNavigating();
         if (dron != null)
         {
             dron.enabled = false;

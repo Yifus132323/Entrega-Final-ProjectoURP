@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
@@ -35,7 +37,8 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float backgroundVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
-    [SerializeField]private GameObject botonSilenciado;
+    [SerializeField] private GameObject botonSilenciado;
+    [SerializeField] private GameObject botonSonido;
 
     [Header("Music")]
     public float musicFadeTime = 1.5f;
@@ -49,6 +52,7 @@ public class AudioManager : MonoBehaviour
     // ---------------------------------------------------------------
     private void Awake()
     {
+        SceneManager.sceneLoaded += AlCargarEscena;
 
         // Singleton: only one AudioManager can exist
         if (Instance != null && Instance != this)
@@ -69,6 +73,11 @@ public class AudioManager : MonoBehaviour
             s.source.playOnAwake = false;
             s.source.volume = s.type == SoundType.SFX ? 1f : GetFinalVolume(s);
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= AlCargarEscena;
     }
 
     private void Start()
@@ -259,11 +268,11 @@ public class AudioManager : MonoBehaviour
 
     public void playPick()
     {
-        Play("pick");
+        Play("recogerBasura");
     }
     public void StopPick()
     {
-        Stop("pick");
+        Stop("recogerBasura");
     }
 
     public void playDrop()
@@ -291,6 +300,8 @@ public class AudioManager : MonoBehaviour
         Play("playOnStart");
         Stop("gameplayMusic");
         botonSilenciado.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(botonSonido);
     }
 
     public void StopMenuStartMusic()
@@ -298,6 +309,14 @@ public class AudioManager : MonoBehaviour
         Stop("playOnStart");
         Stop("gameplayMusic");
         botonSilenciado.SetActive(true);
-        
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(botonSilenciado);
+
+    }
+
+    void AlCargarEscena(Scene escena, LoadSceneMode modo)
+    {
+        botonSilenciado = GameObject.Find("BotonesSecundarios").transform.Find("SonidoDesactivado").gameObject;
+        botonSonido = GameObject.Find("BotonesSecundarios").transform.Find("Sonido").gameObject;
     }
 }

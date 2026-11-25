@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 264245195}
   - component: {fileID: 264245194}
   m_Layer: 5
-  m_Name: Sonido Desactivado
+  m_Name: SonidoDesactivado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,8 +332,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 2092387484739929121, guid: c223ec7eaf2a5504a8bf0e8cfbcc8c77, type: 3}
-    m_PressedSprite: {fileID: -7037199273273803558, guid: 89b4b0ac96ae7bf4db8570b6a3dc35b6, type: 3}
-    m_SelectedSprite: {fileID: -892335934765783446, guid: ce4fcc3c60c20b54985be870ff221c86, type: 3}
+    m_PressedSprite: {fileID: 5006794462426970511, guid: 319ba389764dfa64fba85d34970d7630, type: 3}
+    m_SelectedSprite: {fileID: 2092387484739929121, guid: c223ec7eaf2a5504a8bf0e8cfbcc8c77, type: 3}
     m_DisabledSprite: {fileID: -4523018983029656642, guid: 5fdc5f1557cbfae4c8cf9db073fd62f7, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1614,35 +1614,35 @@ MonoBehaviour:
   - name: playOnStart
     clip: {fileID: 8300000, guid: c14355298dada674e8a72e347800c979, type: 3}
     type: 0
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: gameplayMusic
     clip: {fileID: 8300000, guid: 18c660c6f462aaa42bf3e2d57c1d5eb9, type: 3}
     type: 0
-    volume: 1
+    volume: 0.35
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: downSound
     clip: {fileID: 8300000, guid: aa8a1054e27b8064db406ee92ea7db81, type: 3}
     type: 2
-    volume: 1
+    volume: 0.32
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: diving
-    clip: {fileID: 8300000, guid: 0cdf8b28a582a1d4c89af4908891b33e, type: 3}
+    clip: {fileID: 8300000, guid: 4103033614d91cb4ca7cb5767032ed5b, type: 3}
     type: 2
-    volume: 1
+    volume: 0.608
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: navigating
     clip: {fileID: 8300000, guid: 7f6f126904665624c89c01eaad91f9a0, type: 3}
     type: 2
-    volume: 0.76
+    volume: 0.837
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -1663,7 +1663,14 @@ MonoBehaviour:
   - name: alarmLleno
     clip: {fileID: 8300000, guid: 45643c81daee3ff41992ab35a15ea5cf, type: 3}
     type: 2
-    volume: 1
+    volume: 0.209
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: recogerBasura
+    clip: {fileID: 8300000, guid: 4536af0945b69ac419da907efa7c9de9, type: 3}
+    type: 2
+    volume: 0.856
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -1671,7 +1678,8 @@ MonoBehaviour:
   musicVolume: 1
   backgroundVolume: 1
   sfxVolume: 1
-  botonSilenciado: {fileID: 264245192}
+  botonSilenciado: {fileID: 0}
+  botonSonido: {fileID: 0}
   musicFadeTime: 1.5
 --- !u!1 &1299817425
 GameObject:
@@ -2247,7 +2255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2104942575}
   m_Layer: 5
-  m_Name: Botones secundarios
+  m_Name: BotonesSecundarios
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
